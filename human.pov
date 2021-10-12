@@ -55,10 +55,10 @@ object {    //オブジェクトの設定
     scale <0.5, 3, 0.5>
     // rotate <0, 0, 110>
     // translate <3.5, 12.5, 0>
-    // rotate <0, 0, 45>
-    // translate <3.5, 10, 0>
-    rotate <45, 0, 40>
-    translate <2.3, 10, -1>
+    rotate <0, 0, 45>
+    translate <3.5, 10, 0>
+    // rotate <45, 0, 40>
+    // translate <2.3, 10, -1>
   }
   superellipsoid {  //arm right
     <0.25, 0.25>
@@ -66,10 +66,10 @@ object {    //オブジェクトの設定
     scale <0.5, 3, 0.5>
     // rotate <0, 0, -110>
     // translate <-3.5, 12.5, 0>
-    // rotate <0, 0, -45>
-    // translate <-3.5, 10, 0>
-    rotate <45, 0, -40>
-    translate <-2.3, 10, -1>
+    rotate <0, 0, -45>
+    translate <-3.5, 10, 0>
+    // rotate <45, 0, -40>
+    // translate <-2.3, 10, -1>
   }
   superellipsoid {  //chest
     <0.6, 0.5>
