@@ -62,10 +62,10 @@ object {    //オブジェクトの設定
     <0.25, 0.25>
     pigment{ color Red }
     scale <0.5, 3, 0.5>
-    // rotate <0, 0, -45>
-    // translate <-3.5, 10, 0>
     rotate <0, 0, -110>
     translate <-3.5, 12.5, 0>
+    // rotate <0, 0, -45>
+    // translate <-3.5, 10, 0>
   }
   superellipsoid {  //chest
     <0.6, 0.5>

@@ -7,30 +7,25 @@
 
 #include "human.pov"
 #include "quaterNote.pov"
+#include "tuplet.pov"
 #include "building.pov"
 #include "building2.pov"
 #include "building3.pov"
 // #include "flower.pov"
-// #include "tuplet.pov"
 #include "whale.pov"
 
 camera {    //カメラの設定
-  location<-15, 310, -270>    //カメラを置く位置
+  //location<-15, 310, -270>    //カメラを置く位置
+  //look_at<450, 310, 100>    //カメラで狙う位置
+  //angle 80    //視野角度
+  
+  location<-15-((150-15)*clock/10), 310, -270>    //カメラを置く位置
   look_at<450, 310, 100>    //カメラで狙う位置
   angle 80    //視野角度
 
-  // location<-8, 310, -270>    //カメラを置く位置
-  // look_at<200, 310, 100>    //カメラで狙う位置
-  // angle 80    //視野角度
-  
-  // location<0, 400, -400>    //カメラを置く位置
-  // look_at<0, 400, 100>    //カメラで狙う位置
-  // angle 120    //視野角度
-
-  // location<-150, 310, -270>    //カメラを置く位置
-  // look_at<450, 310, 30>    //カメラで狙う位置
-  // angle 80    //視野角度
-
+  //location<-150, 310, -270>    //カメラを置く位置
+  //look_at<450, 310, 30>    //カメラで狙う位置
+  //angle 80    //視野角度
 }
 
 // background{ color BrightGold }   //背景の設定
@@ -43,16 +38,47 @@ object {
   human
   translate <0, 300, -250>
 }
-object {
-  quarterNote
-  scale 0.2
-  translate <-1, 313, -260>
-}
+
 object {
   whale
   scale 3
   translate <0, 105, -300>
 }
+
+union {  // mirror
+  object {
+    box {
+      <-2000, 0, 170>, <2000, 2000, 200>
+      finish { reflection 1.0}
+    }
+  }
+  object {
+    box {
+      <-20000, 90, -10000>, <20000, 100, 10000>
+      finish { reflection 1.0}
+    }
+  }
+}
+
+#declare i = 0;
+#while (i < 10)
+  #if(-255-(clock)*2+i*5 < -255)
+    #if(mod(i, 3) < 1)
+      object {
+        tuplet
+        scale 0.2
+        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5>
+      }
+    #else
+      object {
+        quarterNote
+        scale 0.2
+        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5>
+      }
+    #end
+  #end
+  #declare i = i + 1;
+#end
 
 #declare i = 0;
 #while (i < 10)
@@ -93,19 +119,3 @@ object {
 
   #declare i = i + 1;
 #end
-
-
-union {  // mirror
-  object {
-    box {
-      <-2000, 0, 170>, <2000, 2000, 200>
-      finish { reflection 1.0}
-    }
-  }
-  // object {
-  //   box {
-  //     <-20000, 90, -10000>, <20000, 100, 10000>
-  //     finish { reflection 1.0}
-  //   }
-  // }
-}
