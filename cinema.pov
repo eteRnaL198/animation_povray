@@ -11,7 +11,7 @@
 #include "building.pov"
 #include "building2.pov"
 #include "building3.pov"
-// #include "flower.pov"
+#include "flower.pov"
 #include "whale.pov"
 
 camera {    //カメラの設定
@@ -19,13 +19,13 @@ camera {    //カメラの設定
   //look_at<450, 310, 100>    //カメラで狙う位置
   //angle 80    //視野角度
   
-  location<-15-((150-15)*clock/10), 310, -270>    //カメラを置く位置
-  look_at<450, 310, 100>    //カメラで狙う位置
+  location<-15-((120-15)*clock/100), 310, -270-clock*10>    //カメラを置く位置
+  look_at<450, 310, 100-clock*10>    //カメラで狙う位置
   angle 80    //視野角度
 
-  //location<-150, 310, -270>    //カメラを置く位置
-  //look_at<450, 310, 30>    //カメラで狙う位置
-  //angle 80    //視野角度
+  // location<-120, 310, -270>    //カメラを置く位置
+  // look_at<450, 310, 30>    //カメラで狙う位置
+  // angle 80    //視野角度
 }
 
 // background{ color BrightGold }   //背景の設定
@@ -36,13 +36,13 @@ light_source{ <-500, 1000, -100> color Gray } //点光源の設定
 
 object {
   human
-  translate <0, 300, -250>
+  translate <0, 300, -250-clock*10>
 }
 
 object {
   whale
-  scale 3
-  translate <0, 105, -300>
+  scale 2.5
+  translate <0, 140, -265-clock*10>
 }
 
 union {  // mirror
@@ -62,18 +62,18 @@ union {  // mirror
 
 #declare i = 0;
 #while (i < 10)
-  #if(-255-(clock)*2+i*5 < -255)
+  #if(-255-(clock)*2+i*5 < -255-clock*10)
     #if(mod(i, 3) < 1)
       object {
         tuplet
-        scale 0.2
-        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5>
+        scale 0.9
+        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5-clock*10>
       }
     #else
       object {
         quarterNote
-        scale 0.2
-        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5>
+        scale 0.9
+        translate <-1, 312+sin(clock+i)*2, -255-(clock)*2+i*5-clock*10>
       }
     #end
   #end
@@ -117,5 +117,32 @@ union {  // mirror
     #declare j = j + 1;
     #end
 
+  #declare i = i + 1;
+#end
+
+
+#declare i = 0; 
+#while(i <= 500)
+  #declare s = seed(i);
+  object{
+    red_flower
+    scale ln(3+clock/50)/8
+    rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
+    translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50+80*clock/50*(0.7-rand(s))*30-clock*10> 
+  }
+  #if(mod(i, 6) < 1)
+    object{
+      blue_flower
+      scale ln(3+clock/50)/8
+      rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
+      translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50+80*clock/50*(0.7-rand(s))*30-clock*10> 
+    }
+    object{
+      yellow_flower
+      scale ln(3+clock/50)/8
+      rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
+      translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50-80*clock/50*(0.7-rand(s))*30-clock*10> 
+    }
+  #end
   #declare i = i + 1;
 #end
