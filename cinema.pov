@@ -121,28 +121,31 @@ union {  // mirror
   #declare i = i + 1;
 #end
 
-#declare i = 0; 
-#while(i <= 500)
-  #declare s = seed(i);
-  object{
-    red_flower
-    scale ln(3+clock/50)/8
-    rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
-    translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50+80*clock/50*(0.7-rand(s))*30-clock*10> 
-  }
-  #if(mod(i, 6) < 1)
+#if(clock >= 5)
+  #declare i = 0;
+  #while(i <= 500)
+    #declare s = seed(i);
+    #declare clk = clock - 5;
     object{
-      blue_flower
-      scale ln(3+clock/50)/8
-      rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
-      translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50+80*clock/50*(0.7-rand(s))*30-clock*10> 
+      red_flower
+      scale ln(3+clk/50)/8
+      rotate<rand(s)*360+clk/50*360 , rand(s)*360+clk/50*360 , rand(s)*360+90+clk/50*360>
+      translate < 0 - 40*clk*rand(s) , 310 + 100*clk/50*(rand(s)-0.2) , -253 + 100*clk/10*clk/50+80*clk/50*(0.7-rand(s))*30-clk*10 - 50> 
     }
-    object{
-      yellow_flower
-      scale ln(3+clock/50)/8
-      rotate<rand(s)*360+clock/50*360 , rand(s)*360+clock/50*360 , rand(s)*360+90+clock/50*360>
-      translate < 0 - 40*clock*rand(s) , 310 + 100*clock/50*(rand(s)-0.2) , -253 + 100*clock/10*clock/50-80*clock/50*(0.7-rand(s))*30-clock*10> 
-    }
+    #if(mod(i, 6) < 1)
+      object{
+        blue_flower
+        scale ln(3+clk/50)/8
+        rotate<rand(s)*360+clk/50*360 , rand(s)*360+clk/50*360 , rand(s)*360+90+clk/50*360>
+        translate < 0 - 40*clk*rand(s) , 310 + 100*clk/50*(rand(s)-0.2) , -253 + 100*clk/10*clk/50+80*clk/50*(0.7-rand(s))*30-clk*10 - 50> 
+      }
+      object{
+        yellow_flower
+        scale ln(3+clk/50)/8
+        rotate<rand(s)*360+clk/50*360 , rand(s)*360+clk/50*360 , rand(s)*360+90+clk/50*360>
+        translate < 0 - 40*clk*rand(s) , 310 + 100*clk/50*(rand(s)-0.2) , -253 + 100*clk/10*clk/50-80*clk/50*(0.7-rand(s))*30-clk*10 - 50> 
+      }
+    #end
+    #declare i = i + 1;
   #end
-  #declare i = i + 1;
 #end

@@ -4,11 +4,15 @@
 #include "textures.inc"
 
 camera {    //カメラの設定
-  location<-20, 10, 0>    //カメラを置く位置
-  // location<0, 1, -30>    //カメラを置く位置
-  // location<-20, 10, 0>    //カメラを置く位置
-  // look_at<30, 10, 0>    //カメラで狙う位置
-  look_at<100, 10, 30>    //カメラで狙う位置
+  // location<-20, 10, -10>    //カメラを置く位置
+  // look_at<20, 10, 10>    //カメラで狙う位置
+
+  // location<0, 10, -30>    //カメラを置く位置
+  // look_at<0, 10, 50>    //カメラで狙う位置
+
+  location<20, 10, -10>    //カメラを置く位置
+  look_at<-20, 10, 10>    //カメラで狙う位置
+
   angle 70    //視野角度
 }
 
@@ -37,7 +41,7 @@ object {    //オブジェクトの設定
   }
   cone {  //hear
     <0, 14, 2>, 0.7
-    <0, 8, 8>, 3
+    <0, 8+4*sin(clock), 8>, 3
     pigment { color NeonPink }
   }
   sphere {  //head
@@ -53,23 +57,15 @@ object {    //オブジェクトの設定
     <0.25, 0.25>
     pigment { color Red }
     scale <0.5, 3, 0.5>
-    // rotate <0, 0, 110>
-    // translate <3.5, 12.5, 0>
-    rotate <0, 0, 45>
-    translate <3.5, 10, 0>
-    // rotate <45, 0, 40>
-    // translate <2.3, 10, -1>
+    rotate <0, -70, -45>
+    translate <3, 12.5, 1.3>
   }
   superellipsoid {  //arm right
     <0.25, 0.25>
     pigment{ color Red }
     scale <0.5, 3, 0.5>
-    // rotate <0, 0, -110>
-    // translate <-3.5, 12.5, 0>
-    rotate <0, 0, -45>
-    translate <-3.5, 10, 0>
-    // rotate <45, 0, -40>
-    // translate <-2.3, 10, -1>
+    rotate <-45, 0, -110>
+    translate <-3, 12.5, 1.3>
   }
   superellipsoid {  //chest
     <0.6, 0.5>
