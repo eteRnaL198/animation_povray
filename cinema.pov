@@ -20,7 +20,7 @@ camera {    //カメラの設定
   //angle 80    //視野角度
   #declare a = -270-clock*10 +100-clock*10;
   #declare b = 450 -15-((120-15)*clock/100);
-  location<-15-((120-15)*clock/20) +0.325*a*a/(a*a+b*b), 310, -270-clock*10 -0.325*b*b/(a*a+b*b)>    //カメラを置く位置
+  location<-15-((120-15)*clock/20) -0.325*a*a/(a*a+b*b), 310, -270-clock*10 +0.325*b*b/(a*a+b*b)>    //カメラを置く位置
   look_at<450, 310, 100-clock*10>    //カメラで狙う位置
   angle 80    //視野角度
 
